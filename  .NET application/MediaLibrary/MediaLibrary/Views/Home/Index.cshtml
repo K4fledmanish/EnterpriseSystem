@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>You have Successfully Logged in.</h1>
+
+
+
+    <h4>@Html.ActionLink("View Media Library", "MediaDisplay", "Media")</h4>
+
+    <h4>@Html.ActionLink("View Borrowed Book", "ShowBorrow", "Media")</h4>
+</div>
+@if ((int)Session["UserLevel"] == 3)
+{
+
+    <h3>Admin Panel </h3>
+    <tr>
+
+        <h4>
+            @Html.ActionLink("View Language", "ViewLanguage", "Media")
+        </h4>
+        <br />
+
+        <h4> @Html.ActionLink("View Genre", "ViewGenre", "Media")</h4>
+        <br />
+
+        <h4> @Html.ActionLink("View Director", "ViewDirectors", "Media")</h4>
+        <br />
+
+        <h4> @Html.ActionLink("Show Users", "ShowUsers", "User")</h4>
+        <br />
+
+        <h4> @Html.ActionLink("ShowBorrow", "ShowBorrow", "Media")</h4>
+        <br />
+
+        <h4> @Html.ActionLink("Show Reserve", "ReserveGet", "Media")</h4>
+    </tr>
+}

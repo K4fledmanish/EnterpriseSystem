@@ -1,0 +1,50 @@
+﻿@model ControllerLayer.DTOCollection.Language
+
+@{
+    ViewBag.Title = "ViewLanguage";
+}
+
+<h2>ViewLanguage</h2>
+
+<div class="container">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Language ID</th>
+                <th>Language Name</th>
+                <th>Delete</th>
+            </tr>
+            @foreach (var eachLanguage in ViewBag.language)
+            {
+                <tr>
+                    <td>@eachLanguage.LID</td>
+                    <td>@eachLanguage.LanguageName</td>
+                    <td>@Html.ActionLink("Delete", "DeleteLanguage", "Media", new { LID = eachLanguage.LID, Language = Model }, new { @class = "btn btn-primary" })</td>
+                </tr>
+            }
+        </table>
+        <h2>Add new Language</h2>
+        @using (Html.BeginForm("InsertLanguage", "Media", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.LanguageName)
+                @Html.TextBoxFor(m => m.LanguageName, new { @class = "form-control", @placeholder = "Language Name" })
+            </div>
+            <input type="submit" value="Add Language" class="btn btn-primary" style="margin-top:25px;" />
+        }
+        <h2>Update Language</h2>
+        @using (Html.BeginForm("UpdateLanguage", "Media", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.LID)
+                @Html.TextBoxFor(m => m.LID, new { @class = "form-control", @placeholder = "Language ID" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LanguageName)
+                @Html.TextBoxFor(m => m.LanguageName, new { @class = "form-control", @placeholder = "Language Name" })
+            </div>
+            <input type="submit" value="Update" class="btn btn-primary" />
+        }
+    </div>
+</div>

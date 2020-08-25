@@ -1,0 +1,30 @@
+﻿@model MediaLibrary.Models.UserValue
+@{
+    ViewBag.Title = "InsertUser";
+}
+
+<h2>InsertUser</h2>
+<div class="container">
+    @using (Html.BeginForm("InsertUser", "User", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.userName)
+            @Html.TextBoxFor(m => m.userName, new { @class = "form-control", @placeholder = "UserName" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.userEmail)
+            @Html.TextBoxFor(m => m.userEmail, new { @class = "form-control", @placeholder = "Email" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.password)
+            @Html.TextBoxFor(m => m.password, new { @class = "form-control", @placeholder = "Password", @type = "Password" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.userLevel)
+            @Html.TextBoxFor(m => m.userLevel, new { @class = "form-control", @placeholder = "Access Level" })
+        </div>
+        <input type="submit" value="Add User" class="btn btn-primary" />
+
+    }
+</div>

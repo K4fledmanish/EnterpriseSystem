@@ -1,0 +1,108 @@
+﻿@using MediaLibrary.Models
+@model Media
+
+
+@{
+    ViewBag.Title = "Index";
+
+
+}
+
+<h2>Index</h2>
+@if ((int)Session["UserLevel"] == 3)
+{
+
+    @Html.ActionLink("Add new media", "InsertMedia", "Media", null, new { @class = "btn btn-primary", @style = "margin-bottom:15px;margin-right:15px;" })
+    @Html.ActionLink("Update media", "UpdateMedia", "Media", null, new { @class = "btn btn-primary", @style = "margin-bottom:15px;margin-right:15px;" })
+
+}
+
+@using (@Html.BeginForm("BrowseAll", "Media", FormMethod.Post))
+{
+    <div class="form-inline" style="margin-bottom:20px;">
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.input, new { @class = "form-control", @placeholder = "Search" })<br />
+        </div>
+        @Html.DropDownListFor(m => m.selection,
+                          new SelectList(Enum.GetValues(typeof(Criteria))),
+                          "Select criteria",
+                          new { @class = "form-control" })
+        <input type="submit" class="btn btn-primary" />
+
+        <h4>@Html.ActionLink("View Borrowed Book", "ShowBorrow", "Media", new { @class = "btn btn-primary", @style = "margin-bottom:15px;margin-right:15px;" })</h4>
+
+        <h3><small style="color:red;">@ViewBag.Msg</small></h3>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genere)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Budget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishYear)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @if (ViewBag.media != null)
+    {
+
+        foreach (var item in ViewBag.media)
+        {
+            <tr>
+                <td>
+                    @item.Title
+                </td>
+                <td>
+                    @item.Genere
+                </td>
+                <td>
+                    @item.Language
+                </td>
+                <td>
+                    @item.Budget
+                </td>
+                <td>
+                    @item.Director
+                </td>
+                <td>
+                    @item.PublishYear
+                </td>
+
+                @if ((int)Session["UserLevel"] == 3)
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "UpdateMedia", "Media", new { id = item.MediaID, title = item.Title }) |
+                        @Html.ActionLink("Delete", "DeleteMedia", "Media", new { MediaID = item.MediaID, Media = Model })
+                    </td>
+                }
+                else if ((int)Session["UserLevel"] == 1)
+                {
+
+                    <td style="text-align:center;">
+                        @Html.ActionLink("Borrow", "InputBorrow", "Media", new { MediaID = item.MediaID, UID = Session["UID"], Media = Model }, new { @class = "btn btn-primary" })
+                    </td>
+                    <td style="text-align:center;">
+                        @Html.ActionLink("Reserve", "InsertReserve", "Media", new { MediaID = item.MediaID, UID = Session["UID"], Media = Model }, new { @class = "btn btn-primary" })
+                    </td>
+                }
+            </tr>
+        }
+    }
+</table>
+
+

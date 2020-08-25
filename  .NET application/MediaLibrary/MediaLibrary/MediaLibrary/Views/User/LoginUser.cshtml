@@ -1,0 +1,20 @@
+﻿@model MediaLibrary.Models.UserValue
+
+@{
+    ViewBag.Title = "LoginUser";
+}
+
+
+<h2>LoginUser</h2>
+<div class="container">
+    @using (@Html.BeginForm("MediaDisplay", "Media", FormMethod.Post))
+    {
+        @Html.LabelFor(model => model.userName, "User Name")<br />
+        @Html.TextBoxFor(model => model.userName)<br />
+        @Html.LabelFor(model => model.password, "Password")<br />
+        @Html.PasswordFor(model => model.password)<br />
+        <input type="submit" class="btn btn-primary" />
+    }
+        <h3><small style="color:red;">@ViewBag.ValidateMsg</small></h3>
+</div>
+
