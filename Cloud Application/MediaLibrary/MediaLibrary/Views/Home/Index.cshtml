@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Welcome User.</h2>
+
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Browse Books", "MediaDisplay", "Media")</li>
+            <li>@Html.ActionLink("View Borrowed Book", "ShowBorrow", "Media")</li>
+
+
+        </ul>
+    </div>
+
+
+
+
+</div>
+@if ((int)Session["UserLevel"] == 3)
+{
+
+<div class="jumbotron">
+
+    &nbsp;&nbsp;&nbsp;<h3>Maintainance</h3>
+
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Show Reserve", "ReserveGet", "Media")</li>
+            <li>@Html.ActionLink("Browse Books", "MediaDisplay", "Media")</li>
+            <li>@Html.ActionLink("User Maintenance", "ShowUsers", "User")</li>
+            <li> @Html.ActionLink("Language Maintenance", "ViewLanguage", "Media")</li>
+            <li>@Html.ActionLink("Director Maintenance", "ViewDirectors", "Media")</li>
+            <li>@Html.ActionLink("Genre Maintenance", "ViewGenre", "Media")</li>
+
+
+
+
+
+        </ul>
+    </div>
+
+
+
+
+</div>
+
+    
+ 
+}

@@ -1,0 +1,43 @@
+﻿@model MediaLibrary.Models.UserValue
+
+@{
+    ViewBag.Title = "UserReport";
+}
+
+<h2>Users</h2>
+
+
+<div class="table-responsive">
+    <table class="table table-hover" style="border:double">
+        <tr style="border:double">
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Access Level</th>
+            <th style="text-align:center;">Delete</th>
+        </tr>
+        @foreach (var allUser in ViewBag.userManager)
+        {
+            <tr>
+                <td>
+                    @allUser.UID
+                </td>
+                <td>
+                    @allUser.userName
+                </td>
+                <td>
+                    @allUser.userEmail
+                </td>
+                <td>
+                    @allUser.password
+                </td>
+                <td>
+                    @allUser.userLevel
+                </td>
+                
+
+            </tr>
+        }
+    </table>
+</div>

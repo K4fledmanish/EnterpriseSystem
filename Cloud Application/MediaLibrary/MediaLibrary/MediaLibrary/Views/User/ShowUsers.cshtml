@@ -1,0 +1,46 @@
+﻿@model MediaLibrary.Models.UserValue
+
+@{
+    ViewBag.Title = "ShowUsers";
+}
+
+<h2>ShowUsers</h2>
+
+@Html.ActionLink("Add New User", "InsertUser", "User", null, new { @class = "btn btn-primary", @style = "margin-bottom:15px;margin-right:15px;" })
+@Html.ActionLink("Update User", "UpdateUser", "User", null, new { @class = "btn btn-primary", @style = "margin-bottom:15px;margin-right:15px;" })
+<div class="table-responsive">
+    <table class="table table-hover" style="border:double">
+        <tr style="border:double">
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Access Level</th>
+            <th style="text-align:center;">Delete</th>
+        </tr>
+        @foreach (var allUser in ViewBag.userManager)
+        {
+            <tr>
+                <td>
+                    @allUser.UID
+                </td>
+                <td>
+                    @allUser.userName
+                </td>
+                <td>
+                    @allUser.userEmail
+                </td>
+                <td>
+                    @allUser.password
+                </td>
+                <td>
+                    @allUser.userLevel
+                </td>
+                <td style="text-align:center;">
+                    @Html.ActionLink("Delete", "DeleteUser", "User", new { UID = allUser.UID, UserValue = Model }, new { @class = "btn btn-primary" })
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>

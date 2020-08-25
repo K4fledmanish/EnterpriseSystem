@@ -1,0 +1,49 @@
+﻿@model MediaLibrary.Models.DirectorsModel
+@{
+    ViewBag.Title = "ViewDirectors";
+}
+
+<h2>ViewDirectors</h2>
+
+<div class="container">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Director ID</th>
+                <th>Name</th>
+                <th>Delete</th>
+            </tr>
+            @foreach (var eachDir in ViewBag.directors)
+            {
+                <tr>
+                    <td>@eachDir.DID</td>
+                    <td>@eachDir.DirectorName</td>
+                    <td>@Html.ActionLink("Delete", "DeleteDirector", "Media", new { DID = eachDir.DID}, new { @class = "btn btn-primary" })</td>
+                </tr>
+            }
+        </table>
+        <h2>Add new Director</h2>
+        @using (Html.BeginForm("InsertDirector", "Media", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.DirectorName)
+                @Html.TextBoxFor(m => m.DirectorName, new { @class = "form-control", @placeholder = "Director Name" })
+            </div>
+            <input type="submit" value="Add Director" class="btn btn-primary" style="margin-top:25px;" />
+        }
+        <h2>Update Director</h2>
+        @using (Html.BeginForm("UpdateDirector", "Media", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.DID)
+                @Html.TextBoxFor(m => m.DID, new { @class = "form-control", @placeholder = "Director ID" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DirectorName)
+                @Html.TextBoxFor(m => m.DirectorName, new { @class = "form-control", @placeholder = "Director Name" })
+            </div>
+            <input type="submit" value="Update" class="btn btn-primary" />
+        }
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model MediaLibrary.Models.Borrow
+@{
+    ViewBag.Title = "ShowBorrow";
+}
+
+<h2>ShowBorrow</h2>
+
+<
+div class="container">
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Borrow ID</th>
+            <th>Media ID</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+            <th>Return</th>
+        </tr>
+        @foreach (var each in ViewBag.borrowList)
+        {
+            
+                <tr>
+                    <td>@each.BID</td>
+                    <td>@each.MediaID</td>
+                    <td>@each.BorrowDate</td>
+                    <td>@each.ReturnDate</td>
+                    <td style="text-align:center;">
+                        @Html.ActionLink("Return", "InsertReturn", "Media", new { ReturnDate = each.ReturnDate, BID = each.BID, MediaID = each.MediaID, BorrowModel = Model }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            
+
+        }
+    </table>
+</div>

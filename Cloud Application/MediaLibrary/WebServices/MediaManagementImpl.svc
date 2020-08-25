@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MediaLibraryWFC.MediaManagerImpl" CodeBehind="MediaManagementImpl.svc.cs" %>

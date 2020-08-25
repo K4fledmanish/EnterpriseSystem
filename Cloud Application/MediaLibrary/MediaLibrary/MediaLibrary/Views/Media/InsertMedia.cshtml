@@ -1,0 +1,74 @@
+﻿@model MediaLibrary.Models.Media
+@using MediaLibrary.Controllers
+
+@{
+    ViewBag.Title = "InsertMedia";
+}
+
+@{
+    List<SelectListItem> directorslist = new List<SelectListItem>();
+    List<SelectListItem> genrelist = new List<SelectListItem>();
+    List<SelectListItem> langlist = new List<SelectListItem>();
+
+
+    foreach (var each in ViewBag.Director)
+    {
+        directorslist.Add(new SelectListItem
+        {
+            Text = each.DirectorName,
+            Value = each.DID.ToString()
+
+        });
+    }
+    foreach (var each in ViewBag.Genre)
+    {
+        genrelist.Add(new SelectListItem
+        {
+            Text = each.GenreName,
+            Value = each.GID.ToString()
+
+        });
+    }
+    foreach (var each in ViewBag.Language)
+    {
+        langlist.Add(new SelectListItem
+        {
+            Text = each.LanguageName,
+            Value = each.LID.ToString()
+
+        });
+    }
+}
+<h2>Add new Media</h2>
+<div class="container">
+    @using (@Html.BeginForm("InsertMedia", "Media", FormMethod.Get))
+    {
+        <div class="form-group">
+            @Html.LabelFor(m => m.Title)
+            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", @placeholder = "Title" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Genere)
+            @Html.DropDownListFor(m => m.Genere, genrelist, "Select Genre", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Director)
+
+            @Html.DropDownListFor(m => m.Director, directorslist, "Select Director", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Language)
+            @Html.DropDownListFor(m => m.Language, langlist, "Select Language", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.PublishYear)
+            @Html.TextBoxFor(m => m.PublishYear, new { @class = "form-control", @placeholder = "Publish Year" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Budget)
+            @Html.TextBoxFor(m => m.Budget, new { @class = "form-control", @placeholder = "Budget" })
+        </div>
+
+        <input type="submit" class="btn btn-primary" />
+    }
+</div>

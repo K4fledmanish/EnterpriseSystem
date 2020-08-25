@@ -1,0 +1,30 @@
+﻿@model MediaLibrary.Models.Reserve
+
+@{
+    ViewBag.Title = "ReserveGet";
+}
+
+<h2>ReserveGet</h2>
+
+<h2>Reserved Books</h2>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>Reserve ID</th>
+                <th>User Name</th>
+                <th>Media Name</th>
+                <th>Reserved Date</th>
+            </tr>
+            @foreach (var eachRes in ViewBag.reserveList)
+            {
+                <tr>
+                    <td>@eachRes.RID</td>
+                    <td>@eachRes.UserName</td>
+                    <td>@eachRes.Title</td>
+                    <td>@eachRes.ReservedDate</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
