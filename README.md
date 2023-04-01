@@ -21,3 +21,20 @@ In this part, you need to ensure that all functions required from Part 2 are wor
 The sample implementation should contain a user interface (Win-based application) for login, master information modify function (Media, Director, Categories etc.), media borrow/return function, query page with results (reporting for librarian/manager), and a logout button. The business logic and data access should be implemented separately. The web service should consist of web services, business logic, and data access projects with query management (Select, Insert, Update, and Delete).
 
 To run the application, you should have Microsoft Visual Studio installed on your system and MySql databse to connect. Clone or download the project, and open the solution file in Visual Studio. Build and run the application.
+
+## Contributing
+
+If you'd like to contribute to this project, please follow these guidelines:
+
+1. Fork the repository and create a new branch for your feature or bug fix.
+2. Make your changes and commit them with a descriptive message.
+3. Push your changes to your forked repository.
+4. Create a pull request to merge your changes into the main repository.
+
+## License
+
+This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
+
+## Author
+
+This project was created by [Manish Kafle](https://github.com/k4fledmanish.
