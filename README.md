@@ -36,7 +36,7 @@ If you'd like to contribute to this project, please follow these guidelines:
 This project is licensed under the MIT license. See the [LICENSE](LICENSE) file for more details.
 
 ## Author
-Project by [Manish Kafle](https://github.com/k4fledmanish).
+Project completed by [Manish Kafle](https://github.com/k4fledmanish).
 
 
 
