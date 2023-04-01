@@ -37,3 +37,30 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 ## Author
 Project by [Manish Kafle](https://github.com/k4fledmanish).
+
+
+
+## Acknowledgments
+
+My gratitude towards several individuals and organizations who have contributed to the successful completion of this project
+
+Enterprise System Project for Bachelors of Information technology (Mobile Apps)
+## Academy of Information Technology, Melborune, Australia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
